@@ -1,0 +1,108 @@
+@import "./normalize.css";
+
+/* COMPONENTS */
+@import "./button.css";
+
+*, *::after, *::before {
+	box-sizing: border-box;
+}
+
+:root {
+	--body-font: "Poppins", sans-serif;
+	/* MOBILE FONT SIZES */
+	--h1-font-size   : 2rem;
+	--h2-font-size   : 1.5rem;
+	--h3-font-size   : 1.25rem;
+	--h4-font-size   : 1rem;
+	--big-font-size  : 1rem;
+	--base-font-size : 0.875rem;
+	--small-font-size: 0.75rem;
+}
+
+@media screen and (min-width: 500px) {
+  :root {
+    /* DESKTOP FONT SIZES */
+    --h1-font-size   : 3rem;
+    --h2-font-size   : 2.25rem;
+    --h3-font-size   : 1.5rem;
+    --h4-font-size   : 1.25rem;
+    --big-font-size  : 1.125rem;
+    --base-font-size : 1rem;
+    --small-font-size: 0.875rem;
+  }
+}
+
+body {
+	background-image : url("~/assets/img/background.png");
+	background-repeat: no-repeat;
+	background-size  : cover;
+	margin           : 0;
+	font-family      : var(--body-font);
+	font-weight      : 500;
+}
+
+#app {
+	display       : flex;
+	flex-direction: column;
+	min-height    : 100vh;
+}
+
+main {
+	flex           : 1;
+	display        : flex;
+	justify-content: center;
+}
+
+a {
+	text-decoration: none;
+	color          : inherit;
+}
+
+p {
+	margin: 0;
+}
+
+h1, h2, h3, h4 {
+	font-family: var(--title-font);
+	font-weight: 700;
+}
+
+h1 {
+	font-size: var(--h1-font-size);
+}
+
+h2 {
+	font-size: var(--h2-font-size);
+}
+
+h3 {
+	font-size: var(--h3-font-size);
+}
+
+h4 {
+	font-size: var(--h4-font-size);
+}
+
+.container {
+	position       : relative;
+	display        : flex;
+	flex-direction : column;
+	align-items    : center;
+	justify-content: center;
+	width          : 100%;
+	max-width      : 500px;
+	padding        : .5rem;
+}
+
+/* FADE TRANSITION */
+.fade-enter-active {
+	transition: opacity 1s ease;
+}
+
+.fade-enter-from {
+	opacity: 0;
+}
+
+.fade-enter-to {
+	opacity: 1;
+}
