@@ -17,15 +17,19 @@ function generatorQuiz({ typeQuiz, numberQuestions, data } = {}) {
 		}),
 	};
 
+	// THE DATA ARE SHUFFLED
 	const shuffledData = shuffle(data, { shuffleAll: true }).slice(0, numberQuestions);
 	const mappedData = shuffledData.map((shuffleItem) => {
-		// CREATE THE ANSWER OPTIONS (ONLY 4)
-		const options = [...Array(4)].map((_, index) => {
-			const randomOption = random(data.filter((random) => random.name.common !== shuffleItem.name.common));
-			return index === 0 ? shuffleItem.name.common : randomOption.name.common;
-		});
+		// THE FIRST OPTION OF THE QUIZ IS CREATED (WHICH IS THE ANSWER)
+		let options = [shuffleItem.name.common];
+
+		// THE OTHER OPTIONS ARE PUSHED (OF WHICH THERE WILL ONLY BE 3), FOR A TOTAL OF 4 UNIQUE OPTIONS
+		while (options.some((option) => option !== random(data).name.common) && options.length < 4) {
+			options = [...options, random(data).name.common];
+		}
 
 		const { question } = questions[typeQuiz](shuffleItem);
+		// THE OPTIONS ARE SHUFFLED SO THAT THE ANSWER IS NOT IN THE FIRST PLACE
 		const shuffledOptions = shuffle(options, { shuffleAll: true });
 		const result = { question, options: shuffledOptions, answer: shuffleItem.name.common };
 
