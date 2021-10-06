@@ -155,6 +155,7 @@ const handleAgain = () => {
 .quiz-card-question .quiz-card-question-title :deep(img) {
 	width: 84px;
 	height: 54px;
+	box-shadow: 0 0px 4px rgb(0 0 0 / 20%);
 }
 
 .quiz-card-question-list .quiz-card-question-option::before {
